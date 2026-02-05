@@ -47,7 +47,7 @@ class MyStates(StatesGroup):
 
 @bot.message_handler(commands=['start'])
 def start_bot_greeting(message):
-    bot.send_message(message.chat.id, 'Привет 👋 Давай попрактикуемся в английском языке. Чтоб начать введите команду /card')
+    bot.send_message(message.chat.id, 'Привет 👋 Давай попрактикуемся в английском языке. Чтоб начать введи команду /card')
 
 
 @bot.message_handler(commands=['card'])
