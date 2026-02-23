@@ -117,13 +117,13 @@ def start_delete_word(message):
 def delete_word(message):
     with Session() as session:
         word = message.text
-        delete_word = session.query(Word).filter(Word.english == word.lower()).first()
+        word_to_delete = session.query(Word).filter(Word.english == word.lower()).first()
         if delete_word:
-            session.delete(delete_word)
+            session.delete(word_to_delete)
             session.commit()
-            bot.send_message(message.chat.id, f"Слово '{delete_word}' удалено.")
+            bot.send_message(message.chat.id, f"Слово '{word_to_delete}' удалено.")
         else:
-            bot.send_message(message.chat.id, f"Слова '{delete_word}' нет. Попробуйте снова.")
+            bot.send_message(message.chat.id, f"Слова '{word_to_delete}' нет. Попробуйте снова.")
 
 
 @bot.message_handler(func=lambda message: message.text == Command.ADD_WORD)
